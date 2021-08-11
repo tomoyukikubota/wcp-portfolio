@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg" %>
+        </div>
+        <div class="col-md-8">
+            <table>
+                <tr>
+                   <td>名前:</td>
+                   <td> <%= @user.name %></td>
+                </tr>
+
+                <tr>
+                   <td height="100">本文:</td>
+                   <td> <%= @user.introduction %></td>
+                </tr>
+
+                <tr>
+                    <% if @user.id == current_user.id %>
+                        <td><%= link_to "編集", edit_user_path(@user), class: "btn btn-success btn-md ml-5" %></td>
+                    <% end %>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+

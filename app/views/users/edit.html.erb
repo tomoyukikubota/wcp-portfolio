@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-body p-4">
+        <%= form_with model: @user, local:true do |f| %>
+
+          <%= f.label :プロフィール画像 %>
+          <%= f.attachment_field :profile_image %><br />
+          <br />
+
+          <%= f.label :名前 %>
+          <%= f.text_field :name, class:"form-control" %><br />
+
+          <%= f.label :プロフィール %>
+          <%= f.text_area :introduction, class:"form-control", rows:"3" %><br />
+
+          <%= f.submit '更新', class:"btn btn-success btn-md" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<% @posts.each do |post| %>
+  <p style="margin: 50px 0 20px 20%">
+    <%= link_to user_path(post.user.id) do %>
+      <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.jpg" %>
+    <% end %>
+    <%= post.user.name %>
+  </p>
+  <div class="card" style="margin-left: 20%; margin-right: 28%;">
+    <div class="card-body">
+      <%= attachment_image_tag post, :image %>
+    </div>
+      <%= post.title %><br />
+      <%= post.body %>
+  </div>
+<% end %>
+
+

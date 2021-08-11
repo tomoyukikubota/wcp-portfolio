@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
+        </div>
+
+        <div class="col-sm-8">
+            <table class="table-white w-50">
+                <tr>
+                    <th>名前:</th>
+                    <td><%= @post.user.name %></td>
+                </tr>
+                <tr>
+                    <th>タイトル:</th>
+                    <td><%= @post.title %></td>
+                </tr>
+                <tr>
+                    <th>詳細:</th>
+                    <td><%= @post.body %></td>
+                </tr>
+                <tr>
+                    <% if @post.user.id == current_user.id %>
+                        <th><%= link_to "編集", edit_post_path(@post), class: "btn btn-success btn-md" %></th>
+                        <td><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-danger btn-md" %></td>
+                    <% end %>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
