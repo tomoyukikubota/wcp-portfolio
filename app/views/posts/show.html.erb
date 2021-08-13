@@ -1,35 +1,59 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-4 mt-5">
             <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
         </div>
 
-        <div class="col-sm-8">
+        <div class="col-sm-5 mt-5">
             <table class="table-white w-50">
-                <tr>
+                <tr height="50">
                     <th>名前:</th>
                     <td><%= @post.user.name %></td>
                 </tr>
-                <tr>
+
+                <tr height="50">
                     <th>タイトル:</th>
                     <td><%= @post.title %></td>
                 </tr>
-                <tr>
+
+                <tr height="50">
                     <th>詳細:</th>
                     <td><%= @post.body %></td>
                 </tr>
-                <tr>
+
+                <tr height="50">
                     <% if @post.user.id == current_user.id %>
                         <th><%= link_to "編集", edit_post_path(@post), class: "btn btn-success btn-md" %></th>
                         <td><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-danger btn-md" %></td>
                     <% end %>
                 </tr>
+
+                <tr  height="100">
+                    <td class="like-btn_<%= @post.id %>">
+                      <%= render "likes/like-btn", post: @post %>
+                    </td>
+                </tr>
             </table>
         </div>
 
+        <div class="col-3 mt-5">
+            <%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
+                <%= f.text_area :comment, size: "50x8" %>
+                <%= f.submit "投稿", class: "btn btn-info btn-md mt-3" %>
+            <% end %>
+        </div>
+
+        <div class="post_comments mt-5">
+            <%= render 'post_comments/comment', post: @post %>
+        </div>
 
     </div>
 </div>
+
+
+
+
+
 
 
 

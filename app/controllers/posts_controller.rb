@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def new
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.save
-    redirect_to posts_path(@post)
+    redirect_to posts_path, notice: "投稿できました"
   end
 
   def edit
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to post_path(@post)
+    redirect_to post_path(@post), notice: "投稿を更新しました"
   end
 
   def destroy
