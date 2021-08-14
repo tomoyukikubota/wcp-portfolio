@@ -53,6 +53,10 @@
                 <li>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
                 </li>
+
+                <li>
+                  <%= link_to "", blogs_path, class: 'nav-link text-dark far fa-calendar-alt mt-1' %>
+                </li>
               <% else %>
                 <li>
                   <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>

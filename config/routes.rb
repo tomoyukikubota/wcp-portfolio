@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
+  get 'blogs/index' => 'blogs#index'
+  resources :blogs
 
   resources :posts do
     resource :likes, only: [:create, :destroy]
