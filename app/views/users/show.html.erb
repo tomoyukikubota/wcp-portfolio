@@ -30,8 +30,16 @@
                 </tr>
 
                 <tr height="80">
-                    <td>フォロー数: <%= @user.followings.count %></td>
-                    <td class="pl-5">フォロワー数: <%= @user.followers.count %></td>
+                    <td>
+                        <%= link_to user_followings_path(@user.id) do %>
+                            フォロー数: <%= @user.followings.count %>
+                        <% end %>
+                    </td>
+                    <td class="pl-5">
+                        <%= link_to user_followers_path(@user.id) do %>
+                            フォロワー数: <%= @user.followers.count %>
+                        <% end %>
+                    </td>
                 </tr>
             </table>
         </div>

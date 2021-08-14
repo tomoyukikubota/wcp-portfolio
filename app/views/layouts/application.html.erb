@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
   </head>
 
       <% if flash[:notice] %>
@@ -23,7 +24,7 @@
         <div class="container">
 
           <%= link_to root_path, class: 'text-dark' do %>
-            <h1 class="title" style="font-family: cursive;">Bike道</h1>
+            <h2 class="title" style="font-family: cursive;">Bike道</h2>
           <% end %>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
