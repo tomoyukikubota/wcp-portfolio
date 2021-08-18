@@ -1,7 +1,8 @@
 class BlogsController < ApplicationController
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.where(user_id: current_user.id).order("start_time")
+    # 日付の若い順
   end
 
   def new

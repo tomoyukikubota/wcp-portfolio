@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-10">
       <h2>カレンダー</h2>
+      <%= link_to 'スケジュール追加', new_blog_path %>
 
       <table>
         <thead>
@@ -27,8 +28,6 @@
       </table>
 
       <br>
-
-      <%= link_to 'スケジュール追加', new_blog_path %>
 
       <%= month_calendar events: @blogs do |date, blogs| %>
         <%= date.day %>

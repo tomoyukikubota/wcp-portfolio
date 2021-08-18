@@ -1,7 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4 mt-5">
-            <%= attachment_image_tag @post, :image, :fill, 300, 300, format: 'jpeg' %>
+            <div class="slider">
+                <% if @post.images.attached? %>
+                    <% @post.images.each do |image| %>
+                        <%= image_tag image, format: 'jpeg', size: "300x300" %>
+                    <% end %>
+                <% end %>
+            </div>
         </div>
 
         <div class="col-sm-5 mt-5">
@@ -42,12 +48,11 @@
                 <%= f.submit "投稿", class: "btn btn-info btn-md mt-3" %>
             <% end %>
         </div>
+    </div>
 
         <div class="post_comments mt-5">
             <%= render 'post_comments/comment', post: @post %>
         </div>
-
-    </div>
 </div>
 
 

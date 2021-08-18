@@ -7,11 +7,15 @@
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+    <!--font-family[hannari]-->
     <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
   </head>
-
+    
       <% if flash[:notice] %>
         <div class="alert alert-primary" role="aleat"><strong><%= notice %></strong></div>
       <% end %>
@@ -24,7 +28,7 @@
         <div class="container">
 
           <%= link_to root_path, class: 'text-dark' do %>
-            <h2 class="title" style="font-family: cursive;">Bike道</h2>
+            <h2 class="title fadeIn" style="font-family: cursive;">Bike道</h2>
           <% end %>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,37 +36,37 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto gnavi">
               <% if user_signed_in? %>
-                <li>
+                <li class="fadeIn">
                   <%= link_to "投稿一覧", posts_path, class: 'nav-link text-dark' %>
                 </li>
 
-                <li>
+                <li class="fadeIn">
                   <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-dark' %>
                 </li>
 
-                <li>
+                <li class="fadeIn">
                   <%= link_to "新規投稿", new_post_path, class: 'nav-link text-dark' %>
                 </li>
 
-                <li>
+                <li class="fadeIn">
                   <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %>
                 </li>
 
-                <li>
+                <li class="fadeIn">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
                 </li>
 
-                <li>
+                <li class="fadeIn">
                   <%= link_to "", blogs_path, class: 'nav-link text-dark far fa-calendar-alt mt-1' %>
                 </li>
               <% else %>
-                <li>
+                <li class="fadeIn">
                   <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
                 </li>
-                <li>
-                  <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+                <li class="fadeIn">
+                  <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark ml-5' %>
                 </li>
               <% end %>
             </ul>

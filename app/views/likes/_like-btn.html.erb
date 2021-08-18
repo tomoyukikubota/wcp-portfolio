@@ -1,11 +1,11 @@
 <% if post.liked_by?(current_user) %>
-  <%= link_to post_likes_path(post), method: :delete, class: "fas fa-heart heart-red my-2", remote: true do %>
+  <%= link_to post_likes_path(post), method: :delete, class: "fas fa-heart heart-red my-3", remote: true do %>
     <%= post.likes.count %>
   <% end %>
 
 <% else %>
 
-  <%= link_to post_likes_path(post), method: :post, class: "fas fa-heart my-2", remote: true do %>
+  <%= link_to post_likes_path(post), method: :post, class: "fas fa-heart my-3", remote: true do %>
     <%= post.likes.count %>
   <% end %>
 

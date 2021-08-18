@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
-  attachment :image
+  has_many_attached :images
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?

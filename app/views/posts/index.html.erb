@@ -7,18 +7,24 @@
               <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.jpg" %>  <%= post.user.name %>
             <% end %>
 
-            <%= attachment_image_tag post, :image %>
+            <div class="slider mt-2">
+              <% if post.images.attached? %>
+                <% post.images.each do |image| %>
+                  <%= image_tag image %>
+                <% end %>
+              <% end %>
+            </div>
 
             <div class="like-btn_<%= post.id %>">
               <%= render "likes/like-btn", post: post %>
             </div>
 
             <!--投稿日時-->
-            <%= l post.created_at %><br />
+            <p><strong>日付</strong><br /><%= l post.created_at %></p><br />
 
-            <p>タイトル<br /><%= post.title %></p><br />
+            <p><strong>タイトル</strong><br /><%= post.title %></p><br />
 
-            <p>詳細<br /><%= post.body %></p>
+            <p><strong>詳細</strong><br /><%= post.body %></p>
         </div>
       <% end %>
       </div>

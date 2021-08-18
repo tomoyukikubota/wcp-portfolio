@@ -6,12 +6,12 @@
         <div class="col-md-4">
             <table>
                 <tr>
-                   <td>名前:</td>
+                   <td style="font-family: cursive;">Name </td>
                    <td> <%= @user.name %></td>
                 </tr>
 
                 <tr>
-                   <td height="100">プロフィール:</td>
+                   <td height="100", style="font-family: cursive;">Profile </td>
                    <td> <%= @user.introduction %></td>
                 </tr>
 
@@ -47,15 +47,27 @@
 
     <div class="row" style="margin-top: 200px;">
         <% @user.posts.each do |post| %>
-            <div class="card">
-                <%= link_to post_path(post) do %>
-                    <%= attachment_image_tag post, :image, size: "300x300" %>
-                <% end %>
+            <div class="col-lg-4 col-md-6 mt-5 ml-1">
+                <div class="slider zoomIn">
+                    <% if post.images.attached? %>
+                        <% post.images.each do |image| %>
+                            <%= link_to post_path(post) do %>
+                                <%= image_tag image, size: "300x300" %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
             </div>
         <% end %>
     </div>
 
 </div>
+
+
+
+
+
+
 
 
 

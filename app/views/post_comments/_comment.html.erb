@@ -1,14 +1,41 @@
-<% post.post_comments.each do |post_comment| %>
+<div class="row">
+  <div class="col-12">
+    <div class="card-body">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th></th>
+            <th style="font-family: cursive;">Name</th>
+            <th style="font-family: cursive;">Comment</th>
+            <th colspan="3"></th>
+          <tr>
+        </thead>
 
-  <%= link_to user_path(post_comment.user) do %>
-    <%= attachment_image_tag post_comment.user, :profile_image, format: 'jpeg', fallback: "no-image.jpg", class: "mt-4" %>
-  <% end %>
+        <% post.post_comments.each do |post_comment| %>
 
-  <%= post_comment.user.name %>
-  <%= post_comment.comment %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(post_comment.user) do %>
+                  <%= attachment_image_tag post_comment.user, :profile_image, format: 'jpeg', fallback: "no-image.jpg" %>
+                <% end %>
+              </td>
 
-  <% if post_comment.user == current_user %>
-    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-md", remote: true %><br />
-  <% end %>
+              <td class="pt-5"><%= post_comment.user.name %></td>
 
-<% end %>
+              <td class="pt-5"><%= post_comment.comment %></td>
+
+              <td class="pt-5">
+                <% if post_comment.user == current_user %>
+                  <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-md", remote: true %><br />
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+

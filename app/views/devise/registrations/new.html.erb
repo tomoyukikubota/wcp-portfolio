@@ -1,45 +1,47 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-6">
-      <h2>新規登録</h2>
+<div class="image1">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 mx-auto field-tag">
+        <h2 class="fadeUp", style="font-family: cursive;">Sign in</h2>
 
-      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field mt-2">
-          <%= f.label :プロフィール画像 %><br/>
-          <%= f.file_field :profile_image %>
-        </div>
+          <div class="field mt-2 fadeUp">
+            <%= f.label :プロフィール画像 %><br/>
+            <%= f.file_field :profile_image %>
+          </div>
 
-        <div class="field mt-2">
-          <%= f.label :名前 %><br />
-          <%= f.text_field :name, autofocus: true, class: "form-control" %>
-        </div>
+          <div class="field mt-2 fadeUp">
+            <%= f.label :名前 %><br />
+            <%= f.text_field :name, autofocus: true, class: "form-control" %>
+          </div>
 
-        <div class="field mt-2">
-          <%= f.label :メールアドレス %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-        </div>
+          <div class="field mt-2 fadeUp">
+            <%= f.label :メールアドレス %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
 
-        <div class="field mt-2">
-          <%= f.label :パスワード %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-        </div>
+          <div class="field mt-2 fadeUp">
+            <%= f.label :パスワード %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
 
-        <div class="field mt-2">
-          <%= f.label :確認パスワード %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %><br />
-        </div>
+          <div class="field mt-2 fadeUp">
+            <%= f.label :確認パスワード %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %><br />
+          </div>
 
-        <div class="actions">
-          <%= f.submit "新規登録", class: "btn btn-info btn-md" %>
-        </div>
-      <% end %>
+          <div class="actions fadeUp">
+            <%= f.submit "新規登録", class: "btn btn-info btn-md" %>
+          </div>
+        <% end %>
 
-      <%= render "devise/shared/links" %>
+        <!--<= render "devise/shared/links" %>-->
+      </div>
     </div>
   </div>
 </div>

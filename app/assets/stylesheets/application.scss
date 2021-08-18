@@ -18,4 +18,117 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+ @import "slick-theme";
+ @import "slick";
+
+/*==================================================
+共通　横並びのための設定
+===================================*/
+
+.gnavi{
+    display: flex;
+    flex-wrap: wrap;/*スマホ表示折り返し用なのでPCのみなら不要*/
+    list-style: none;
+    margin-left: 50px;
+}
+
+.gnavi li a{
+    display: block;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #fff000;
+}
+
+.gnavi li{
+    margin-bottom: 20px;
+}
+
+/*==================================================
+　5-3-5 左から右に背景が伸びる
+===================================*/
+
+/*背景の設定*/
+
+.gnavi li a{
+    /*背景色の基点とするためrelativeを指定*/
+	position: relative;
+}
+
+.gnavi li a::after {
+	content: '';
+    /*絶対配置で線の位置を決める*/
+	position: absolute;
+	z-index: -1;
+	bottom: 0;
+	left: 0;
+    /*背景の形状*/
+	width: 0;
+	height: 100%;
+	background: #fff000;
+    /*アニメーションの指定*/
+	transition:all .5s;
+	opacity: 0;/*はじめは透過0*/
+}
+
+/*現在地とhoverの設定*/
+.gnavi li.current a::after,
+.gnavi li a:hover::after {
+    /*背景の形状*/
+	width: 100%;/*横幅を伸ばす*/
+	opacity: 1;/*不透明に*/
+}
+
+.gnavi li.current a,
+.gnavi li a:hover{
+  	color: #eaf6fd;
+}
+.fadeIn {
+animation-name: fadeInAnime;
+animation-duration:3s;
+animation-fill-mode:forwards;
+opacity: 0;
+}
+@keyframes fadeInAnime{
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.fadeUp{
+animation-name:fadeUpAnime;
+animation-duration:0.5s;
+animation-fill-mode:forwards;
+opacity:0;
+}
+
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+  transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
+}
+
+.image{
+  background-image: url(bike6.jpg);
+  background-size: cover;
+  height: 100vh;
+  background-position: bottom;
+}
+.image1{
+  background-image: url(bike5.jpg);
+  background-size: cover;
+  height: 100vh;
+  background-position: bottom;
+}
+.field-tag{
+  margin-top:15%;
+}
 
