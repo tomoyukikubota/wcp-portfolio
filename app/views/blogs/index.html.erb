@@ -16,13 +16,15 @@
 
         <tbody>
           <% @blogs.each do |blog| %>
-            <tr>
-              <td><%= blog.title %></td>
-              <td><%= l blog.start_time %></td>
-              <td><%= link_to 'Show', blog, class: "btn btn-outline-primary btn-sm" %></td>
-              <td><%= link_to 'Edit', edit_blog_path(blog.id), class: "btn btn-outline-success btn-sm" %></td>
-              <td><%= link_to 'Destroy',blog_path(blog.id), method: :delete, data: { confirm: '本当に消してもいいですか？' }, class: "btn btn-outline-danger btn-sm" %></td>
-            </tr>
+            <% if blog.user.id == current_user.id %>
+              <tr>
+                <td><%= blog.title %></td>
+                <td><%= l blog.start_time %></td>
+                <td><%= link_to 'Show', blog, class: "btn btn-outline-primary btn-sm" %></td>
+                <td><%= link_to 'Edit', edit_blog_path(blog.id), class: "btn btn-outline-success btn-sm" %></td>
+                <td><%= link_to 'Destroy',blog_path(blog.id), method: :delete, data: { confirm: '本当に消してもいいですか？' }, class: "btn btn-outline-danger btn-sm" %></td>
+              </tr>
+              <% end %>
           <% end %>
         </tbody>
       </table>
@@ -33,9 +35,11 @@
         <%= date.day %>
 
         <% blogs.each do |blog| %>
-          <div>
-            <%= link_to blog.title, blog %>
-          </div>
+          <% if blog.user.id == current_user.id %>
+            <div>
+              <%= link_to blog.title, blog %>
+            </div>
+            <% end %>
         <% end %>
       <% end %>
     </div>
