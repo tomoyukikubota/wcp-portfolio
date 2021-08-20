@@ -1,51 +1,39 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg" %>
+        <div class="col-md-2">
+            <p><%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg" %></p>
+            <p class="pl-4"><%= render 'info', user: @user %></p>
+            <% if @user.id == current_user.id %>
+                <p><%= link_to "編集", edit_user_path(@user), class: "btn btn-success btn-md ml-5" %></p>
+            <% end %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <table>
                 <tr>
-                   <td style="font-family: cursive;">Name</td>
+                   <td height="80", style="font-family: cursive;">Name</td>
                    <td>: <%= @user.name %></td>
-                </tr>
-
-                <tr>
-                   <td height="100", style="font-family: cursive;">Profile </td>
-                   <td>: <%= @user.introduction %></td>
-                </tr>
-
-                <tr>
-                    <% if @user.id == current_user.id %>
-                        <td><%= link_to "編集", edit_user_path(@user), class: "btn btn-success btn-md ml-5" %></td>
-                    <% end %>
-                </tr>
-            </table>
-        </div>
-
-        <div class="col-md-4">
-            <table>
-                <tr>
-                    <td><%= render 'info', user: @user %></td>
-                </tr>
-
-                <tr height="80">
-                    <td>
+                    <td class="pl-5">
                         <%= link_to user_followings_path(@user.id) do %>
                             フォロー数: <%= @user.followings.count %>
                         <% end %>
                     </td>
-                    <td class="pl-5">
+                    <td class="pl-3">
                         <%= link_to user_followers_path(@user.id) do %>
                             フォロワー数: <%= @user.followers.count %>
                         <% end %>
                     </td>
                 </tr>
+
+                <tr>
+                   <td height="50", style="font-family: cursive;">Profile </td>
+                   <td>: <%= @user.introduction %></td>
+                </tr>
+
             </table>
         </div>
     </div>
 
-    <div class="row" style="margin-top: 200px;">
+    <div class="row">
         <% @user.posts.each do |post| %>
             <div class="col-lg-4 col-md-6 mt-5 ml-1">
                 <div class="slider zoomIn">
@@ -62,6 +50,7 @@
     </div>
 
 </div>
+
 
 
 

@@ -1,34 +1,54 @@
-<div class="card-body">
-  <table class="table table-borderless">
-    <thead>
-      <tr>
-        <th></th>
-        <th style="font-family: cursive;">Name</th>
-        <th style="font-family: cursive;">Status</th>
-        <th colspan="3"></th>
-      <tr>
-    </thead>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <!--form_tag・・・modelに基づかないformを作成する(検索機能)https://www.for-engineer.life/entry/rails-search-form/-->
+      <%= form_tag(users_path, :method => "get") do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag "検索" ,:name => nil ,class: "btn btn-primary btn-sm text-center"%>
+      <% end %>
+    </div>
+  </div>
 
-  <% if users.exists? %>
-    <% users.each do |user| %>
-      <tbody>
-        <tr>
-          <td>
-            <%= link_to user_path(user) do %>
-              <%= attachment_image_tag user, :profile_image, fallback: "no-image.jpg" %>
-            <% end %>
-          </td>
+  <div class="row">
+    <div class="col-12">
+      <div class="card-body">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th style="font-family: cursive;">ProfileImage</th>
+              <th style="font-family: cursive;">Name</th>
+              <th style="font-family: cursive;">FollowStatus</th>
+              <th colspan="3"></th>
+            <tr>
+          </thead>
 
-          <td class="pt-5"><%= user.name %></td>
+        <% if users.exists? %>
+          <% users.each do |user| %>
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to user_path(user) do %>
+                    <%= attachment_image_tag user, :profile_image, fallback: "no-image.jpg" %>
+                  <% end %>
+                </td>
 
-          <td class="pt-5"><%= render 'users/info', user: user %></td>
+                <td style="padding-top: 80px;"><%= user.name %></td>
 
-        </tr>
-      </tbody>
-    <% end %>
-  <% else %>
-    <p>ユーザーがいません</p>
-  <% end %>
+                <td style="padding-top: 80px;"><%= render 'users/info', user: user %></td>
+              </tr>
+            </tbody>
+          <% end %>
+          <hr>
+        <% else %>
+          <p>ユーザーがいません</p>
+        <% end %>
 
-  </table>
-</div>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+

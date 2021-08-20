@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    # 検索フォームで入力されたキーワードがパラメーター として渡されてparamsで受け取る
+    @users = User.all.search(params[:search])
   end
 
   def show

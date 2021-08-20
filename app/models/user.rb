@@ -34,5 +34,14 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+# 部分一致するユーザーネームがあれば、その結果がページに表示
+  def self.search(search) #self.はUser.を意味する
+    if search
+      where(['name LIKE ?', "%#{search}%"]) #検索とuserのnameの部分一致を表示。
+    else
+      all #全て表示させる
+    end
+  end
 end
 
