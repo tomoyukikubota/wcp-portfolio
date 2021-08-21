@@ -16,12 +16,12 @@
     <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
   </head>
 
-      <% if flash[:notice] %>
-        <div class="alert alert-primary" role="aleat"><strong><%= notice %></strong></div>
-      <% end %>
-      <% if flash[:alert] %>
-        <div class="alert alert-denger" role="aleat"><strong><%= alert %></strong></div>
-      <% end %>
+      <!--< if flash[:notice] %>-->
+      <!--  <div class="alert alert-primary" role="aleat"><strong><%= notice %></strong></div>-->
+      <!--< end %>-->
+      <!--< if flash[:alert] %>-->
+      <!--  <div class="alert alert-denger" role="aleat"><strong><%= alert %></strong></div>-->
+      <!--< end %>-->
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -52,6 +52,13 @@
 
                 <li class="fadeIn">
                   <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %>
+                </li>
+
+                <% if unchecked_notifications.any? %>
+                  <i class="fa fa-circle" style="color: gold;"></i>
+                <% end %>
+                <li>
+                    <%= link_to "通知", notifications_path, class: 'nav-link text-dark' %>
                 </li>
 
                 <li class="fadeIn">

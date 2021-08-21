@@ -35,12 +35,12 @@
 
     <div class="row">
         <% @user.posts.each do |post| %>
-            <div class="col-lg-4 col-md-6 mt-5 ml-1">
+            <div class="col-lg-4 col-md-6 mt-5">
                 <div class="slider zoomIn">
                     <% if post.images.attached? %>
                         <% post.images.each do |image| %>
                             <%= link_to post_path(post) do %>
-                                <%= image_tag image, size: "300x300" %>
+                                <%= image_tag image, size: "350x300" %>
                             <% end %>
                         <% end %>
                     <% end %>

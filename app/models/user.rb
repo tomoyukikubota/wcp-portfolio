@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :blogs, dependent: :destroy
 
+  # class_name: "Notification"でNotificationモデルの、foreign_key: "visiter_id" で、visiter_idを参考に、active_notificationsモデルへアクセスするようにする
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
   attachment :profile_image
 
   # 参考サイト<https://qiita.com/MOEKASAKAI/items/69ae05554b1562a603ea>
@@ -34,6 +38,20 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  #フォロー時の通知
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
+
 
 # 部分一致するユーザーネームがあれば、その結果がページに表示
   def self.search(search) #self.はUser.を意味する
