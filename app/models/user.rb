@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :encrypted_password, presence: true, length: { minimum: 6 }
+
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
@@ -38,7 +41,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   #フォロー時の通知
   def create_notification_follow!(current_user)
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])

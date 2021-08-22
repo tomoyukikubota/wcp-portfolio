@@ -42,6 +42,8 @@ group :development, :test do
   gem 'pry-byebug'
 # コンソールでメソッドなどが使えるようになる機能 https://pikawaka.com/rails/pry
   gem 'pry-rails'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -60,9 +62,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 
-  # ここから追加
-  gem 'rspec-rails'
-  gem "factory_bot_rails"
+
   gem 'faker'
 end
 

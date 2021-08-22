@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # アクセス権限(ログインしていない場合ユーザーが使える機能を制限)
   # before_actionを定義することで全てのアクションが実行される前に、before_actionが実行される。
   before_action :authenticate_user!,except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?

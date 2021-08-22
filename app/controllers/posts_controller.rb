@@ -18,8 +18,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path, notice: "投稿できました"
+    if @post.save
+      redirect_to posts_path, notice: "投稿できました"
+    else
+      render :new
+    end
   end
 
   def edit
