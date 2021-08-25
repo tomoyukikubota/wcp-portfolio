@@ -5,7 +5,7 @@
   <div class="card-body">
     <table class="table table-borderless">
       <tr>
-        <td><%= attachment_image_tag notification.visiter, :profile_image, fallback: "no-image.jpg" %></td>
+        <td><%= attachment_image_tag notification.visiter, :profile_image, fallback: "no-image.jpg", class: "user_image" %></td>
 
         <% if notification.action == 'follow' %>
           <td class="pt-5">

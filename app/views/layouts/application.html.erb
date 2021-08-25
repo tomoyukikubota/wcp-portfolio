@@ -57,7 +57,7 @@
                 <% if unchecked_notifications.any? %>
                   <i class="fa fa-circle" style="color: gold;"></i>
                 <% end %>
-                <li>
+                <li class="fadeIn">
                     <%= link_to "通知", notifications_path, class: 'nav-link text-dark' %>
                 </li>
 
@@ -67,6 +67,13 @@
 
                 <li class="fadeIn">
                   <%= link_to "", blogs_path, class: 'nav-link text-dark far fa-calendar-alt mt-1' %>
+                </li>
+
+                <li class="fadeIn mt-1 ml-5">
+                  <%= form_tag(users_path, :method => "get") do %>
+                    <%= text_field_tag :search %>
+                    <%= submit_tag "検索" ,:name => nil ,class: "btn btn-primary btn-sm"%>
+                  <% end %>
                 </li>
               <% else %>
                 <li class="fadeIn">
@@ -81,6 +88,7 @@
 
         </div>
       </nav>
+    <hr>
     </header>
     <%= yield %>
   </body>

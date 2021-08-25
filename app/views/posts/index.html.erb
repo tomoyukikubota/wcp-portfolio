@@ -3,33 +3,32 @@
     <div class="col-12 mx-auto">
       <% @posts.reverse.each do |post| %>
         <div class="card card-body mt-5">
-          <span>
-            <%= link_to user_path(post.user.id) do %>
-              <%= attachment_image_tag post.user, :profile_image, fallback: "no-image.jpg" %>  <%= post.user.name %>
-            <% end %>
-            <% if post.user.id == current_user.id %>
-              <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-danger btn-md ml-5" %>
-            <% end %>
-          </span>
-
-            <div class="slider mt-2">
-              <% if post.images.attached? %>
-                <% post.images.each do |image| %>
-                  <%= image_tag image %>
+          <div class="slider mt-2">
+            <% if post.images.attached? %>
+              <% post.images.each do |image| %>
+                <%= link_to post_path(post) do %>
+                  <%= image_tag image, class: "post-image" %>
                 <% end %>
               <% end %>
-            </div>
+            <% end %>
+          </div>
 
-            <div class="like-btn_<%= post.id %>">
-              <%= render "likes/like-btn", post: post %>
-            </div>
+          <div class="like-btn_<%= post.id %>">
+            <%= render "likes/like-btn", post: post %>
+          </div>
+          <p>投稿者:
+            <%= link_to user_path(post.user.id) do %>
+              <%= post.user.name %>
+            <% end %>
+          </p>
+            
 
-            <!--投稿日時-->
-            <p><strong>日付</strong><br /><%= l post.created_at %></p><br />
+          <!--投稿日時-->
+          <p><strong>日付</strong><br /><%= l post.created_at %></p><br />
 
-            <p><strong>タイトル</strong><br /><%= post.title %></p><br />
+          <p><strong>タイトル</strong><br /><%= post.title %></p><br />
 
-            <p><strong>詳細</strong><br /><%= post.body %></p>
+          <p class="overflow-wrap"><strong>詳細</strong><br /><%= post.body %></p>
         </div>
       <% end %>
       </div>

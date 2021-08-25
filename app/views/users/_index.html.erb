@@ -1,18 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto">
-      <!--form_tag・・・modelに基づかないformを作成する(検索機能)https://www.for-engineer.life/entry/rails-search-form/-->
-      <%= form_tag(users_path, :method => "get") do %>
-        <%= text_field_tag :search %>
-        <%= submit_tag "検索" ,:name => nil ,class: "btn btn-primary btn-sm text-center"%>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12">
+    <div class="col-8 mx-auto">
       <div class="card-body">
-        <table class="table table-borderless">
+        <table class="table">
           <thead>
             <tr>
               <th style="font-family: cursive;">ProfileImage</th>
@@ -28,7 +18,7 @@
               <tr>
                 <td>
                   <%= link_to user_path(user) do %>
-                    <%= attachment_image_tag user, :profile_image, fallback: "no-image.jpg" %>
+                    <%= attachment_image_tag user, :profile_image, fallback: "no-image.jpg", class: "user_image" %>
                   <% end %>
                 </td>
 
@@ -38,7 +28,6 @@
               </tr>
             </tbody>
           <% end %>
-          <hr>
         <% else %>
           <p>ユーザーがいません</p>
         <% end %>
@@ -47,6 +36,7 @@
       </div>
     </div>
   </div>
+
 
 
 

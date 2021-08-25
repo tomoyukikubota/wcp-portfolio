@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
 
+  before_action :current_user_blog, only: [:show, :edit, :update]
+
   def index
     # @blogs = Blog.where(user_id: current_user.id).order("start_time")
     # 日付の若い順
@@ -42,5 +44,12 @@ class BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:title, :content, :start_time).merge(user_id: current_user.id)
+  end
+
+  def current_user_blog
+    blog = Blog.find(params[:id])
+    if blog.user != current_user
+      redirect_to blogs_path
+    end
   end
 end

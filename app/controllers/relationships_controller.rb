@@ -3,7 +3,7 @@ class RelationshipsController < ApplicationController
   # (request.referer)1つ前のURLを返す
   def create
     current_user.follow(params[:user_id])
-    #current_user.follow(@user)
+    # current_user.follow(@user)
     #通知の作成
     @user = User.find(params[:user_id])
     current_user.create_notification_follow!(@user)
@@ -12,6 +12,7 @@ class RelationshipsController < ApplicationController
 
   def destroy
     current_user.unfollow(params[:user_id])
+    # current_user.unfollow(@user)
     redirect_to request.referer
   end
 
