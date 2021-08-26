@@ -18,6 +18,10 @@ module BikeRoad
 
     # タイムゾーンを日本時間に設定
     config.time_zone = 'Asia/Tokyo'
+    
+    # 言語ファイルを階層ごとに設定するための記述
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
 
     # デフォルトのロケールを日本（ja）に設定
     config.i18n.default_locale = :ja

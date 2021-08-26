@@ -24,7 +24,12 @@
 
                 <tr height="50">
                     <th style="font-family: cursive;">Name</th>
-                    <td> : <%= @post.user.name %></td>
+                    
+                    <td>:
+                        <%= link_to user_path(@post.user.id) do %>
+                            <%= @post.user.name %>
+                        <% end %>
+                    </td>
                 </tr>
 
                 <tr height="50">

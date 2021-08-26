@@ -2,26 +2,19 @@
     <div class="row">
         <div class="col-md-2">
             <p><%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", class: "user_image" %></p>
-            <p class="pl-4"><%= render 'info', user: @user %></p>
+            <p class="pl-4">
+                <span class="follow-btn_<%= @user.id %>">
+                    <%= render 'users/info', user: @user %>
+                </span>
+            </p>
             <% if @user.id == current_user.id %>
                 <p><%= link_to "編集", edit_user_path(@user), class: "btn btn-success btn-md ml-5" %></p>
             <% end %>
         </div>
         <div class="col-md-6">
             <table>
-                <tr>
-                   <td height="80", style="font-family: cursive;">Name</td>
-                   <td>: <%= @user.name %></td>
-                    <td class="pl-5">
-                        <%= link_to user_followings_path(@user.id) do %>
-                            フォロー数: <%= @user.followings.count %>
-                        <% end %>
-                    </td>
-                    <td class="pl-3">
-                        <%= link_to user_followers_path(@user.id) do %>
-                            フォロワー数: <%= @user.followers.count %>
-                        <% end %>
-                    </td>
+                <tr class="follow-count_<%= @user.id %>">
+                   <%= render 'users/follow-count', user: @user %>
                 </tr>
 
                 <tr>
