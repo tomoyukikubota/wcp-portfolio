@@ -1,25 +1,30 @@
-<div class="img fadeUp">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5 mx-auto">
-        <div class="form-body p-4">
-          <%= form_with model: @user, local:true do |f| %>
+<div class="container fadeUp">
+  <div class="row">
+    <div class="col-sm-4 img1">
+    </div>
 
-              <%= f.label :プロフィール画像 %><br />
-              <%= f.attachment_field :profile_image %><br />
-              <br />
+    <div class="col-sm-4">
+      <div class="form-body p-4">
+        <%= form_with model: @user, local:true do |f| %>
 
-              <%= f.label :名前 %>
-              <%= f.text_field :name, class:"form-control" %><br />
+            <%= f.label :プロフィール画像 %><br />
+            <%= f.attachment_field :profile_image %><br />
+            <br />
 
-              <%= f.label :プロフィール %>
-              <%= f.text_area :introduction, class:"form-control", rows:"3" %><br />
+            <%= f.label :名前 %>
+            <%= f.text_field :name, class:"form-control" %><br />
 
-              <%= f.submit '更新', class:"btn btn-success btn-md" %>
+            <%= f.label :プロフィール %>
+            <%= f.text_area :introduction, class:"form-control", rows:"3" %><br />
 
-          <% end %>
-        </div>
+            <%= f.submit '更新', class:"btn btn-outline-dark" %>
+
+        <% end %>
       </div>
     </div>
-</div>
+
+    <div class="col-sm-4 img2">
+    </div>
+
+  </div>
 </div>

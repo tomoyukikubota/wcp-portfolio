@@ -1,31 +1,36 @@
-<div class="img fadeUp">
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-6 mx-auto">
-        <%= form_with(model: @blog, local: true) do |f| %>
-          <table>
-            <tr height=100>
-              <th><%= f.label :タイトル %>:</th>
-              <td><%= f.text_field :title, class: "form-control" %></td>
-            </tr>
-
-            <tr height=100>
-              <th><%= f.label :開始時間 %>:</th>
-              <td><%= f.datetime_field :start_time, class: "form-control" %></td>
-            </tr>
-
-            <tr height=100>
-              <th><%= f.label :詳細 %>:</th>
-              <td><%= f.text_field :content, class: "form-control" %></td>
-            </tr>
-
-            <tr height=100>
-              <th></th>
-              <td><%= f.submit "更新", class: "btn btn-success btn-md" %></td>
-            </tr>
-          </table>
-        <% end %>
-      </div>
+<div class="container fadeUp mt-5">
+  <div class="row">
+    <div class="col-sm-4 img1">
     </div>
+
+    <div class="col-sm-4">
+      <%= form_with(model: @blog, local: true) do |f| %>
+        <table>
+          <tr height=100>
+            <th><%= f.label :タイトル %>:</th>
+            <td><%= f.text_field :title, class: "form-control" %></td>
+          </tr>
+
+          <tr height=100>
+            <th><%= f.label :開始時間 %>:</th>
+            <td><%= f.datetime_field :start_time, class: "form-control" %></td>
+          </tr>
+
+          <tr height=100>
+            <th><%= f.label :詳細 %>:</th>
+            <td><%= f.text_field :content, class: "form-control" %></td>
+          </tr>
+
+          <tr height=100>
+            <th></th>
+            <td><%= f.submit "更新", class: "btn btn-outline-dark btn-md" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+    <div class="col-sm-4 img2">
+    </div>
+
   </div>
 </div>

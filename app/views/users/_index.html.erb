@@ -1,41 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 mx-auto">
-      <% if users.exists? %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th style="font-family: cursive;">ProfileImage</th>
-              <th style="font-family: cursive;">Name</th>
-              <th style="font-family: cursive;">FollowStatus</th>
-              <th colspan="3"></th>
-            <tr>
-          </thead>
+    <% if users.exists? %>
+      <% users.each do |user| %>
+        <div class="col-md-3 mt-5">
+          <span style="font-family: cursive;">
+            <%= link_to user_path(user) do %>
+              <%= attachment_image_tag user, :profile_image, size: "130x130", fallback: "no-image.jpg", class: "rounded-circle" %><br>
+            <% end %>
+          <span class="ml-3">Name: <%= user.name %></span><br>
+          <span class="ml-3 follow-btn_<%= user.id %>"><%= render 'users/info', user: user %></span>
+          </span>
 
-        <% users.each do |user| %>
-          <tbody>
-            <tr>
-              <td>
-                <%= link_to user_path(user) do %>
-                  <%= attachment_image_tag user, :profile_image, fallback: "no-image.jpg", class: "user_image" %>
-                <% end %>
-              </td>
-
-              <td style="padding-top: 80px;"><%= user.name %></td>
-
-              <td style="padding-top: 80px;">
-                <span class="follow-btn_<%= user.id %>"><%= render 'users/info', user: user %></span>
-              </td>
-            </tr>
-          </tbody>
-        <% end %>
-        </table>
-      <% else %>
-        <p>ユーザーがいません</p>
+        </div>
       <% end %>
-    </div>
+
+    <% else %>
+      <p>ユーザーがいません</p>
+    <% end %>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@
                 </span>
             </p>
             <% if @user.id == current_user.id %>
-                <p><%= link_to "編集", edit_user_path(@user), class: "btn btn-success btn-md ml-5" %></p>
+                <p><%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-dark btn-md ml-5" %></p>
             <% end %>
         </div>
         <div class="col-md-6">

@@ -21,9 +21,9 @@
               <tr>
                 <td><%= blog.title %></td>
                 <td><%= l blog.start_time %></td>
-                <td><%= link_to 'Show', blog, class: "btn btn-outline-primary btn-sm" %></td>
-                <td><%= link_to 'Edit', edit_blog_path(blog.id), class: "btn btn-outline-success btn-sm" %></td>
-                <td><%= link_to 'Destroy',blog_path(blog.id), method: :delete, data: { confirm: '本当に消してもいいですか？' }, class: "btn btn-outline-danger btn-sm" %></td>
+                <td><%= link_to '詳細', blog %> | </td>
+                <td><%= link_to '編集', edit_blog_path(blog.id) %> | </td>
+                <td><%= link_to '削除',blog_path(blog.id), method: :delete, data: { confirm: '本当に消してもいいですか？' } %></td>
               </tr>
               <% end %>
           <% end %>

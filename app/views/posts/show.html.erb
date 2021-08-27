@@ -10,21 +10,21 @@
             </div>
         </div>
 
-        <div class="col-sm-5 mt-5">
+        <div class="col-sm-3 mt-5">
             <table class="table-white">
                 <tr>
                     <td class="like-btn_<%= @post.id %>">
                       <%= render "likes/like-btn", post: @post %>
                     </td>
                     <% if @post.user.id == current_user.id %>
-                        <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-success btn-md" %></td>
-                        <td><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-danger btn-md" %></td>
+                        <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-dark btn-md" %></td>
+                        <td><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-outline-danger btn-md" %></td>
                     <% end %>
                 </tr>
 
                 <tr height="50">
                     <th style="font-family: cursive;">Name</th>
-                    
+
                     <td>:
                         <%= link_to user_path(@post.user.id) do %>
                             <%= @post.user.name %>
@@ -47,8 +47,8 @@
 
         <div class="col-3 mt-5">
             <%= form_with(model:[@post, @post_comment], remote: true) do |f| %>
-                <%= f.text_area :comment, rows:"5", class: "w-100" %>
-                <%= f.submit "投稿", class: "btn btn-info btn-md mt-3" %>
+                <%= f.text_area :comment, rows:"5", size: "45x5" %>
+                <%= f.submit "投稿", class: "btn btn-outline-dark btn-md mt-3" %>
             <% end %>
         </div>
     </div>
