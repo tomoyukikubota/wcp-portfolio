@@ -12,9 +12,6 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :blogs, dependent: :destroy
 
-  # class_name: "Notification"でNotificationモデルの、foreign_key: "visiter_id" で、visiter_idを参考に、active_notificationsモデルへアクセスするようにする
-  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
-  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   attachment :profile_image
 
@@ -42,9 +39,14 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+
+  # class_name: "Notification"でNotificationモデルの、foreign_key: "visiter_id" で、visiter_idを参考に、active_notificationsモデルへアクセスするようにする
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
   #フォロー時の通知
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
@@ -65,4 +67,3 @@ class User < ApplicationRecord
     end
   end
 end
-

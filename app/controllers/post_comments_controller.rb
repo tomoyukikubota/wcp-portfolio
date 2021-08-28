@@ -25,3 +25,10 @@ class PostCommentsController < ApplicationController
     params.require(:post_comment).permit(:comment)
   end
 end
+
+# post_comments
+# id, post_id, user_id, body
+# 1, 1, 1, ''
+# 2, 1, 2, ''
+# 2, 2, 3, ''
+

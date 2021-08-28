@@ -5,7 +5,7 @@ class RelationshipsController < ApplicationController
     current_user.follow(params[:user_id])
     #通知の作成
     @user = User.find(params[:user_id])
-    current_user.create_notification_follow!(@user)
+    @user.create_notification_follow!(current_user)
     # redirect_to request.referer
   end
 

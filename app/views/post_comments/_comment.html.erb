@@ -1,6 +1,6 @@
 <div class="row">
   <% if @post.post_comments.exists? %>
-    <% post.post_comments.each do |post_comment| %>
+    <% post.post_comments.reverse.each do |post_comment| %>
       <div class="col-md-3 mt-5">
 
         <div class="pt-2">
