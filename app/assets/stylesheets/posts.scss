@@ -9,12 +9,12 @@
   width: 100%;
 }
 .img1{
-  background-image: url('phot1.jpg');
+  background-image: image-url("phot1.jpg");
   background-repeat: no-repeat;
   background-size: auto 100%;
 }
 .img2{
-  background-image: url('phot2.jpg');
+  background-image: image-url("phot2.jpg");
   background-position: right;
   background-repeat: no-repeat;
   background-size: auto 100%;

@@ -169,7 +169,7 @@ $slick-opacity-not-active: 0.25 !default;
         }
     }
 }
-
+// 画像が1枚の時はドットを出さない
 .slick-dots > li:first-child:last-child{
     display: none;
 }
