@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get 'blogs/index' => 'blogs#index'
-  # get '/notifications' => 'notifications#index'
+
   resources :blogs
   resources :notifications, only: [:index, :destroy_all]
   delete '/notifications/destroy_all' => 'notifications#destroy_all'
