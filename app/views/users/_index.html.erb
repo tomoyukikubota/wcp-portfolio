@@ -5,10 +5,10 @@
         <div class="col-auto  col-md-3 mt-5 pl-5">
           <span style="font-family: cursive;">
             <%= link_to user_path(user) do %>
-              <%= attachment_image_tag user, :profile_image, size: "130x130", fallback: "no-image.jpg", class: "rounded-circle" %><br>
+              <%= attachment_image_tag user, :profile_image, size: "100x100", fallback: "no-image.jpg", class: "rounded-circle" %><br>
             <% end %>
-          <span class="ml-3">Name: <%= user.name %></span><br>
-          <span class="ml-3 follow-btn_<%= user.id %>"><%= render 'users/info', user: user %></span>
+          <span>Name: <%= user.name %></span><br>
+          <span class="follow-btn_<%= user.id %>"><%= render 'users/info', user: user %></span>
           </span>
 
         </div>
