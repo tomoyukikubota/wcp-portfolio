@@ -11,38 +11,37 @@
         </div>
 
         <div class="col-sm-3 mt-5">
-            <table class="table-white">
-                <tr>
-                    <td class="like-btn_<%= @post.id %>">
-                      <%= render "likes/like-btn", post: @post %>
-                    </td>
-                    <% if @post.user.id == current_user.id %>
-                        <td><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-dark btn-md" %></td>
-                        <td><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-outline-danger btn-md" %></td>
-                    <% end %>
-                </tr>
 
-                <tr height="50">
-                    <th style="font-family: cursive;">Name</th>
+            <span class="like-btn_<%= @post.id %>">
+              <%= render "likes/like-btn", post: @post %>
+            </span>
+            <% if @post.user.id == current_user.id %>
+                <span><%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-dark btn-md" %></span>
+                <span><%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-outline-danger btn-md" %></span>
+            <% end %>
 
-                    <td>:
-                        <%= link_to user_path(@post.user.id) do %>
-                            <%= @post.user.name %>
-                        <% end %>
-                    </td>
-                </tr>
+            <br>
+            <hr>
 
-                <tr height="50">
-                    <th style="font-family: cursive;">Title</th>
-                    <td> : <%= @post.title %></td>
-                </tr>
+            <span style="font-family: cursive;">Name:</span>
+            <span>
+                <%= link_to user_path(@post.user.id) do %>
+                    <%= @post.user.name %>
+                <% end %>
+            </span>
 
-                <tr height="50">
-                    <th style="font-family: cursive;">Contents</th>
-                    <td class="overflow-wrap"> : <%= @post.body %></td>
-                </tr>
+            <br>
+            <hr>
 
-            </table>
+            <span style="font-family: cursive;">Title</span>
+            <span> : <%= @post.title %></span>
+
+            <br>
+            <hr>
+
+            <span style="font-family: cursive;">Contents</span>
+            <span class="overflow-wrap"> : <%= @post.body %></span>
+
         </div>
 
         <div class="col-3 mt-5">
@@ -51,6 +50,8 @@
                 <%= f.submit "投稿", class: "btn btn-outline-dark btn-md mt-3" %>
             <% end %>
         </div>
+
+
     </div>
 
         <div class="post_comments mt-5">
@@ -61,6 +62,7 @@
             <% end %>
         </div>
 </div>
+
 
 
 

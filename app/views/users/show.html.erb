@@ -11,18 +11,18 @@
                 <p><%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-dark btn-md ml-5" %></p>
             <% end %>
         </div>
-        <div class="col-md-6">
-            <table>
-                <tr class="follow-count_<%= @user.id %>">
-                   <%= render 'users/follow-count', user: @user %>
-                </tr>
+        <div class="col-md-6 mt-3">
 
-                <tr>
-                   <td height="50", style="font-family: cursive;">Profile </td>
-                   <td>: <%= @user.introduction %></td>
-                </tr>
+            <span class="follow-count_<%= @user.id %>">
+                <%= render 'users/follow-count', user: @user %>
+            </span><br><hr>
 
-            </table>
+
+            <span style="font-family: cursive;">Name: <%= @user.name %></span><br><hr>
+
+
+            <span style="font-family: cursive;">Profile: <%= @user.introduction %></span>
+
         </div>
     </div>
 
@@ -33,7 +33,7 @@
                     <% if post.images.attached? %>
                         <% post.images.each do |image| %>
                             <%= link_to post_path(post) do %>
-                                <%= image_tag image, size: "350x300" %>
+                                <%= image_tag image, size: "400x300" %>
                             <% end %>
                         <% end %>
                     <% end %>
@@ -43,6 +43,9 @@
     </div>
 
 </div>
+
+
+
 
 
 
