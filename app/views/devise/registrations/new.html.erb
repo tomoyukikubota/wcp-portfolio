@@ -15,32 +15,20 @@
           <div class="field mt-2 fadeUp">
             <%= f.label :名前 %><br />
             <%= f.text_field :name, autofocus: true, class: "form-control" %>
-            <% if @user.errors.include?(:name) %>
-              <p class="error-messe"><%= @user.errors.full_messages_for(:name).first %></p>
-            <% end %>
           </div>
 
           <div class="field mt-2 fadeUp">
             <%= f.label :メールアドレス %><br />
-            <% if @user.errors.include?(:email) %>
-              <p class="error-messe"><%= @user.errors.full_messages_for(:email).first %></p>
-            <% end %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
           </div>
 
           <div class="field mt-2 fadeUp">
             <%= f.label :password, 'パスワード6文字以上' %><br />
-            <% if @user.errors.include?(:password) %>
-              <p class="error-messe"><%= @user.errors.full_messages_for(:password).first %></p>
-            <% end %>
             <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
           </div>
 
           <div class="field mt-2 fadeUp">
             <%= f.label :確認パスワード %><br />
-            <% if @user.errors.include?(:password_confirmation) %>
-              <p class="error-messe"><%= @user.errors.full_messages_for(:password_confirmation).first %></p>
-            <% end %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %><br />
           </div>
 

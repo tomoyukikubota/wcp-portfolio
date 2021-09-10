@@ -15,4 +15,11 @@ ja:
     messages:
       not_saved: "登録に失敗しました"
 
+  devise:
+    sessions:
+      signed_in: "ログインに成功しました"
+      signed_out: "ログアウトしました"
+    registrations:
+      signed_up: "Welcome! Bike道へ!!"
+
 
