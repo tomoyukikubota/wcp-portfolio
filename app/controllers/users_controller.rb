@@ -10,6 +10,21 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+  
+  def hide
+    @user = User.find(params[:id])
+    email = @user.email
+    if email == 'guest@example.com'
+      redirect_to root_path, notice: 'ゲストユーザーは編集・削除できません。'
+    else
+     #is_deletedカラムにフラグを立てる(defaultはfalse)
+    @user.update(is_deleted: true)
+    #ログアウトさせる
+    reset_session
+    redirect_to root_path, notice: "ありがとうございました。またのご利用を心よりお待ちしております。"
+
+    end
+  end
 
   def edit
     @user = User.find(params[:id])

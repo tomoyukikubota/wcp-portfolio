@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     passwords: 'users/passwords'
@@ -24,4 +24,5 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
+  patch '/users/:id/hide' => 'users#hide', as: 'users_hide'
 end

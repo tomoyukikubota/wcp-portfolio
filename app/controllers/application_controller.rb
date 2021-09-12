@@ -13,6 +13,13 @@ class ApplicationController < ActionController::Base
     user_path(resource)
   end
 
+  def check_guest
+    email = resource&.email || params[:user][:email].downcase
+    if email == 'guest@example.com'
+      redirect_to root_path, aleat: 'ゲストユーザーは編集・削除できません。'
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

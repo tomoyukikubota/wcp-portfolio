@@ -21,5 +21,6 @@ ja:
       signed_out: "ログアウトしました"
     registrations:
       signed_up: "Welcome! Bike道へ!!"
-
+    failure:
+      inactive: "ログインに失敗しました"
 
