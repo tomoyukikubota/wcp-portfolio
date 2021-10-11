@@ -11,10 +11,7 @@ ja:
   time:
       formats:
         default: "%Y/%m/%d %H:%M"
-  errors:
-    messages:
-      not_saved: "登録に失敗しました"
-
+        
   devise:
     sessions:
       signed_in: "ログインに成功しました"
@@ -22,5 +19,7 @@ ja:
     registrations:
       signed_up: "Welcome! Bike道へ!!"
     failure:
-      inactive: "ログインに失敗しました"
+      invalid: "ログインに失敗しました"
+      not_found_in_database: "メールアドレスもしくはパスワードが正しくありません"
+
 
